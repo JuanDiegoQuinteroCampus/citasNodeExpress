@@ -72,6 +72,9 @@ CREATE TABLE
         Foreign Key (med_especialidad) REFERENCES especialidad(esp_id),
         Foreign Key (med_consultorio) REFERENCES consultorio(cons_codigo)
     );
+ALTER TABLE medico CHANGE med_nroMatriculaProfesional med_nroMatriculaProsional INT NOT NULL  ;
+
+
 
 CREATE TABLE
     especialidad(
@@ -98,3 +101,70 @@ DROP TABLE estado_cita;
 DROP TABLE especialidad;
 
 DROP TABLE consultorio;
+INSERT INTO
+    tipo_documento (
+        tipdoc_nombre,
+        tipdoc_abreviatura
+    )
+VALUES ("Tarjeta de Identidad", "TI");
+INSERT INTO
+    genero (gen_nombre, gen_abreviatura)
+VALUES ("Femenino", "Fem");
+INSERT INTO
+    acudiente (
+        acu_nombreCompleto,
+        acu_telefono,
+        acu_direccion
+    )
+VALUES (
+        "Paco Alberto Escalante Prada",
+        "3155466998",
+        "Calle 21 nº 41-25"
+    );
+INSERT INTO especialidad(esp_nombre) VALUES("Medicina General");
+INSERT INTO
+    consultorio(cons_nombre)
+VALUES ("El Prado");
+INSERT INTO
+    estado_cita (estcita_nombre)
+VALUES ("ACTIVA"), ('SUPENDIDA'), ('CANCELADA'), ('PERDIDA');
+INSERT INTO
+    medico (
+        med_nroMatriculaProsional,
+        med_nombreCompleto,
+        med_consultorio,
+        med_especialidad
+    )
+VALUES (
+        "465899584",
+        "David Rojas",
+        1,
+        1
+    );
+INSERT INTO
+    usuario (
+        usu_id,
+        usu_nombre,
+        usu_segdo_nombre,
+        usu_primer_apellido_usuar,
+        usu_segdo_apellido_usuar,
+        usu_telefono,
+        usu_direccion,
+        usu_email,
+        usu_tipodoc,
+        usu_genero,
+        usu_acudiente
+    ) VALUES (
+        1095303358,
+        "Daniela",
+        "",
+        "Zapata",
+        "Mora",
+        "3158696969",
+        "Parque de los gatos",
+        "daniLaMasViral@gmail.com",
+        1,
+        1,
+        1
+    );
+INSERT INTO cita(cit_fecha,cit_estadoCita,cit_medico,cit_datosUsuario) VALUES ("2023-07-12 10:30:00",1,465899584,1098817567)

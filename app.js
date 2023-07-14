@@ -4,6 +4,7 @@ import storageUsuario from './routers/usuario.js';
 import storageCita from './routers/cita.js';
 import storageMedico from './routers/medico.js';
 import storageProxCita from './routers/proxCita.js';
+import storageCitaMedico from './routers/citaMedico.js';
 
 
 dotenv.config();

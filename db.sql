@@ -72,9 +72,9 @@ CREATE TABLE
         Foreign Key (med_especialidad) REFERENCES especialidad(esp_id),
         Foreign Key (med_consultorio) REFERENCES consultorio(cons_codigo)
     );
-ALTER TABLE medico CHANGE med_nroMatriculaProfesional med_nroMatriculaProsional INT NOT NULL  ;
 
-
+ALTER TABLE
+    medico CHANGE med_nroMatriculaProfesional med_nroMatriculaProsional INT NOT NULL;
 
 CREATE TABLE
     especialidad(
@@ -101,15 +101,18 @@ DROP TABLE estado_cita;
 DROP TABLE especialidad;
 
 DROP TABLE consultorio;
+
 INSERT INTO
     tipo_documento (
         tipdoc_nombre,
         tipdoc_abreviatura
     )
 VALUES ("Tarjeta de Identidad", "TI");
+
 INSERT INTO
     genero (gen_nombre, gen_abreviatura)
 VALUES ("Femenino", "Fem");
+
 INSERT INTO
     acudiente (
         acu_nombreCompleto,
@@ -121,13 +124,15 @@ VALUES (
         "3155466998",
         "Calle 21 nº 41-25"
     );
+
 INSERT INTO especialidad(esp_nombre) VALUES("Medicina General");
-INSERT INTO
-    consultorio(cons_nombre)
-VALUES ("El Prado");
+
+INSERT INTO consultorio(cons_nombre) VALUES ("El Prado");
+
 INSERT INTO
     estado_cita (estcita_nombre)
 VALUES ("ACTIVA"), ('SUPENDIDA'), ('CANCELADA'), ('PERDIDA');
+
 INSERT INTO
     medico (
         med_nroMatriculaProsional,
@@ -138,6 +143,34 @@ INSERT INTO
 VALUES (
         "465899584",
         "David Rojas",
+        1,
+        1
+    );
+
+INSERT INTO
+    usuario (
+        usu_id,
+        usu_nombre,
+        usu_segdo_nombre,
+        usu_primer_apellido_usuar,
+        usu_segdo_apellido_usuar,
+        usu_telefono,
+        usu_direccion,
+        usu_email,
+        usu_tipodoc,
+        usu_genero,
+        usu_acudiente
+    )
+VALUES (
+        1095303358,
+        "Daniela",
+        "",
+        "Zapata",
+        "Mora",
+        "3158696969",
+        "Parque de los gatos",
+        "daniLaMasViral@gmail.com",
+        1,
         1,
         1
     );
@@ -154,102 +187,720 @@ INSERT INTO
         usu_tipodoc,
         usu_genero,
         usu_acudiente
-    ) VALUES (
-        1095303358,
-        "Daniela",
-        "",
-        "Zapata",
-        "Mora",
+    )
+VALUES (
+        109539582,
+        "juan",
+        "diego",
+        "quintero",
+        "argüello",
         "3158696969",
         "Parque de los gatos",
         "daniLaMasViral@gmail.com",
+        2,
+        2,
+        2
+    );
+INSERT INTO
+    cita(
+        cit_fecha,
+        cit_estadoCita,
+        cit_medico,
+        cit_datosUsuario
+    )
+VALUES (
+        "2024-07-12 10:30:00",
+        1,
+        465899584,
+        109539582
+    );
+INSERT INTO
+    cita(
+        cit_fecha,
+        cit_estadoCita,
+        cit_medico,
+        cit_datosUsuario
+    )
+VALUES (
+        "2023-07-12 10:30:00",
+        1,
+        465899584,
+        1098817567
+    );
+
+insert into
+    tipo_documento (
+        tipdoc_nombre,
+        tipdoc_abreviatura
+    )
+values ('Cedula de Ciudadania', 'Cc');
+
+insert into
+    tipo_documento (
+        tipdoc_nombre,
+        tipdoc_abreviatura
+    )
+values ('Tarjeta de Identidad', 'T.i');
+
+insert into
+    tipo_documento (
+        tipdoc_nombre,
+        tipdoc_abreviatura
+    )
+values ('Pasaporte', 'Past');
+
+insert into
+    genero (gen_nombre, gen_abreviatura)
+values ('Masculino', 'M');
+
+insert into
+    genero (gen_nombre, gen_abreviatura)
+values ('Femenino', 'F');
+
+insert into
+    genero (gen_nombre, gen_abreviatura)
+values ('Otro', 'Otro');
+
+insert into
+    acudiente (
+        acu_nombreCompleto,
+        acu_telefono,
+        acu_direccion
+    )
+values (
+        'Edgar Eduardo Mantilla Garcia',
+        '3167965248',
+        'Lebrija Santander'
+    );
+
+insert into
+    acudiente (
+        acu_nombreCompleto,
+        acu_telefono,
+        acu_direccion
+    )
+values (
+        'Stiven Carvajal',
+        '3147854987',
+        'Palomitas Floridablanca'
+    );
+
+INSERT INTO
+    usuario (
+        usu_id,
+        usu_nombre,
+        usu_segdo_nombre,
+        usu_primer_apellido_usuar,
+        usu_segdo_apellido_usuar,
+        usu_telefono,
+        usu_direccion,
+        usu_email,
+        usu_tipodoc,
+        usu_genero,
+        usu_acudiente
+    )
+VALUES (
+        '123',
+        'Andres',
+        'Santiago',
+        'Carvajal',
+        'Peliño',
+        '3154784596',
+        'Bucaramanga',
+        'santiagoyo@gmail.com',
         1,
         1,
         1
     );
-INSERT INTO cita(cit_fecha,cit_estadoCita,cit_medico,cit_datosUsuario) VALUES ("2023-07-12 10:30:00",1,465899584,1098817567);
 
-insert into tipo_documento (tipdoc_nombre,tipdoc_abreviatura) values ('Cedula de Ciudadania','Cc');
-insert into tipo_documento (tipdoc_nombre,tipdoc_abreviatura) values ('Tarjeta de Identidad','T.i');
-insert into tipo_documento (tipdoc_nombre,tipdoc_abreviatura) values ('Pasaporte','Past');
+INSERT INTO
+    usuario (
+        usu_id,
+        usu_nombre,
+        usu_segdo_nombre,
+        usu_primer_apellido_usuar,
+        usu_segdo_apellido_usuar,
+        usu_telefono,
+        usu_direccion,
+        usu_email,
+        usu_tipodoc,
+        usu_genero,
+        usu_acudiente
+    )
+VALUES (
+        '321',
+        'Fabio',
+        'Alberto',
+        'Morales',
+        'Petriño',
+        '3174578496',
+        'Giron',
+        'fabio478@outlook.es',
+        1,
+        1,
+        1
+    );
 
-insert into genero (gen_nombre,gen_abreviatura) values ('Masculino','M');
-insert into genero (gen_nombre,gen_abreviatura) values ('Femenino','F');
-insert into genero (gen_nombre,gen_abreviatura) values ('Otro','Otro');
+INSERT INTO
+    usuario (
+        usu_id,
+        usu_nombre,
+        usu_primer_apellido_usuar,
+        usu_segdo_apellido_usuar,
+        usu_telefono,
+        usu_direccion,
+        usu_email,
+        usu_tipodoc,
+        usu_genero,
+        usu_acudiente
+    )
+VALUES (
+        '74',
+        'Alejandra',
+        'Mantilla',
+        'Garcia',
+        '3007845647',
+        'Lebrija',
+        'aleja78@outlook.es',
+        2,
+        2,
+        2
+    );
 
-insert into acudiente (acu_nombreCompleto, acu_telefono, acu_direccion) values ('Edgar Eduardo Mantilla Garcia','3167965248', 'Lebrija Santander');
-insert into acudiente (acu_nombreCompleto, acu_telefono, acu_direccion) values ('Stiven Carvajal','3147854987', 'Palomitas Floridablanca');
+INSERT INTO
+    especialidad (esp_id, esp_nombre)
+VALUES (1, 'Cardiología');
+
+INSERT INTO
+    especialidad (esp_id, esp_nombre)
+VALUES (2, 'Dermatología');
+
+INSERT INTO
+    especialidad (esp_id, esp_nombre)
+VALUES (3, 'Pediatría');
+
+INSERT INTO
+    especialidad (esp_id, esp_nombre)
+VALUES (4, 'Oftalmología');
+
+INSERT INTO
+    especialidad (esp_id, esp_nombre)
+VALUES (5, 'Gastroenterología');
+
+INSERT INTO
+    especialidad (esp_id, esp_nombre)
+VALUES (6, 'Cardiología');
+
+INSERT INTO
+    consultorio (cons_codigo, cons_nombre)
+VALUES (1, 'Consultorio A');
+
+INSERT INTO
+    consultorio (cons_codigo, cons_nombre)
+VALUES (2, 'Consultorio B');
+
+INSERT INTO
+    consultorio (cons_codigo, cons_nombre)
+VALUES (3, 'Consultorio C');
+
+INSERT INTO
+    consultorio (cons_codigo, cons_nombre)
+VALUES (4, 'Consultorio D');
+
+INSERT INTO
+    consultorio (cons_codigo, cons_nombre)
+VALUES (5, 'Consultorio E');
+
+INSERT INTO
+    medico (
+        med_nroMatriculaProsional,
+        med_nombreCompleto,
+        med_consultorio,
+        med_especialidad
+    )
+VALUES (123456, 'Dr. Juan Pérez', 1, 1);
+
+INSERT INTO
+    medico (
+        med_nroMatriculaProsional,
+        med_nombreCompleto,
+        med_consultorio,
+        med_especialidad
+    )
+VALUES (
+        234567,
+        'Dra. Ana Rodríguez',
+        2,
+        2
+    );
+
+INSERT INTO
+    medico (
+        med_nroMatriculaProsional,
+        med_nombreCompleto,
+        med_consultorio,
+        med_especialidad
+    )
+VALUES (
+        345678,
+        'Dr. Luis Martínez',
+        3,
+        3
+    );
+
+INSERT INTO
+    medico (
+        med_nroMatriculaProsional,
+        med_nombreCompleto,
+        med_consultorio,
+        med_especialidad
+    )
+VALUES (
+        456789,
+        'Dra. Laura Gómez',
+        4,
+        4
+    );
+
+INSERT INTO
+    medico (
+        med_nroMatriculaProsional,
+        med_nombreCompleto,
+        med_consultorio,
+        med_especialidad
+    )
+VALUES (
+        567890,
+        'Dr. Carlos Sánchez',
+        5,
+        5
+    );
+
+INSERT INTO
+    medico (
+        med_nroMatriculaProsional,
+        med_nombreCompleto,
+        med_consultorio,
+        med_especialidad
+    )
+VALUES (1, 'Dr. Carlos Sánchez', 5, 5);
+
+INSERT INTO
+    estado_cita (estcita_id, estcita_nombre)
+VALUES (1, 'Pendiente');
+
+INSERT INTO
+    estado_cita (estcita_id, estcita_nombre)
+VALUES (2, 'Confirmada');
+
+INSERT INTO
+    estado_cita (estcita_id, estcita_nombre)
+VALUES (3, 'Cancelada');
+
+INSERT INTO
+    estado_cita (estcita_id, estcita_nombre)
+VALUES (4, 'Realizada');
+
+INSERT INTO
+    estado_cita (estcita_id, estcita_nombre)
+VALUES (5, 'Ausente');
+
+INSERT INTO
+    tipo_documento (
+        tipdoc_id,
+        tipdoc_nombre,
+        tipdoc_abreviatura
+    )
+VALUES (
+        1,
+        'Cédula de Ciudadanía',
+        'CC'
+    );
+
+INSERT INTO
+    tipo_documento (
+        tipdoc_id,
+        tipdoc_nombre,
+        tipdoc_abreviatura
+    )
+VALUES (
+        2,
+        'Tarjeta de Identidad',
+        'TI'
+    );
+
+INSERT INTO
+    tipo_documento (
+        tipdoc_id,
+        tipdoc_nombre,
+        tipdoc_abreviatura
+    )
+VALUES (
+        3,
+        'Cédula de Extranjería',
+        'CE'
+    );
+
+INSERT INTO
+    tipo_documento (
+        tipdoc_id,
+        tipdoc_nombre,
+        tipdoc_abreviatura
+    )
+VALUES (4, 'Pasaporte', 'PAS');
+
+INSERT INTO
+    tipo_documento (
+        tipdoc_id,
+        tipdoc_nombre,
+        tipdoc_abreviatura
+    )
+VALUES (5, 'Registro Civil', 'RC');
+
+INSERT INTO
+    genero (
+        gen_id,
+        gen_nombre,
+        gen_abreviatura
+    )
+VALUES (1, 'Masculino', 'M');
+
+INSERT INTO
+    genero (
+        gen_id,
+        gen_nombre,
+        gen_abreviatura
+    )
+VALUES (2, 'Femenino', 'F');
+
+INSERT INTO
+    genero (
+        gen_id,
+        gen_nombre,
+        gen_abreviatura
+    )
+VALUES (3, 'Otro', 'O');
+
+INSERT INTO
+    genero (
+        gen_id,
+        gen_nombre,
+        gen_abreviatura
+    )
+VALUES (4, 'No especificado', 'NE');
+
+INSERT INTO
+    genero (
+        gen_id,
+        gen_nombre,
+        gen_abreviatura
+    )
+VALUES (
+        5,
+        'Prefiero no decirlo',
+        'PND'
+    );
+
+INSERT INTO
+    acudiente (
+        acu_codigo,
+        acu_nombreCompleto,
+        acu_telefono,
+        acu_direccion
+    )
+VALUES (
+        1,
+        'Luisa Pérez',
+        '1234567890',
+        'Calle 123, Ciudad'
+    );
+
+INSERT INTO
+    acudiente (
+        acu_codigo,
+        acu_nombreCompleto,
+        acu_telefono,
+        acu_direccion
+    )
+VALUES (
+        2,
+        'Pedro Gómez',
+        '9876543210',
+        'Avenida 456, Ciudad'
+    );
+
+INSERT INTO
+    acudiente (
+        acu_codigo,
+        acu_nombreCompleto,
+        acu_telefono,
+        acu_direccion
+    )
+VALUES (
+        3,
+        'María Rodríguez',
+        '5555555555',
+        'Carrera 789, Ciudad'
+    );
+
+INSERT INTO
+    acudiente (
+        acu_codigo,
+        acu_nombreCompleto,
+        acu_telefono,
+        acu_direccion
+    )
+VALUES (
+        4,
+        'Andrés Torres',
+        '9999999999',
+        'Calle Principal, Ciudad'
+    );
+
+INSERT INTO
+    acudiente (
+        acu_codigo,
+        acu_nombreCompleto,
+        acu_telefono,
+        acu_direccion
+    )
+VALUES (
+        5,
+        'Laura Sánchez',
+        '1111111111',
+        'Avenida Central, Ciudad'
+    );
+
+INSERT INTO
+    usuario (
+        usu_id,
+        usu_nombre,
+        usu_segdo_nombre,
+        usu_primer_apellido_usuar,
+        usu_segdo_apellido_usuar,
+        usu_telefono,
+        usu_direccion,
+        usu_email,
+        usu_tipodoc,
+        usu_genero,
+        usu_acudiente
+    )
+VALUES (
+        1,
+        'Juan',
+        'David',
+        'Pérez',
+        'Gómez',
+        '1234567890',
+        'Calle 123, Ciudad',
+        'juan@example.com',
+        1,
+        1,
+        1
+    );
+
+INSERT INTO
+    usuario (
+        usu_id,
+        usu_nombre,
+        usu_segdo_nombre,
+        usu_primer_apellido_usuar,
+        usu_segdo_apellido_usuar,
+        usu_telefono,
+        usu_direccion,
+        usu_email,
+        usu_tipodoc,
+        usu_genero,
+        usu_acudiente
+    )
+VALUES (
+        2,
+        'María',
+        'Fernanda',
+        'Rodríguez',
+        'García',
+        '9876543210',
+        'Avenida 456, Ciudad',
+        'maria@example.com',
+        2,
+        2,
+        2
+    );
+
+INSERT INTO
+    usuario (
+        usu_id,
+        usu_nombre,
+        usu_segdo_nombre,
+        usu_primer_apellido_usuar,
+        usu_segdo_apellido_usuar,
+        usu_telefono,
+        usu_direccion,
+        usu_email,
+        usu_tipodoc,
+        usu_genero,
+        usu_acudiente
+    )
+VALUES (
+        3,
+        'Carlos',
+        '',
+        'González',
+        'Sánchez',
+        '5555555555',
+        'Carrera 789, Ciudad',
+        'carlos@example.com',
+        1,
+        1,
+        3
+    );
+
+INSERT INTO
+    usuario (
+        usu_id,
+        usu_nombre,
+        usu_segdo_nombre,
+        usu_primer_apellido_usuar,
+        usu_segdo_apellido_usuar,
+        usu_telefono,
+        usu_direccion,
+        usu_email,
+        usu_tipodoc,
+        usu_genero,
+        usu_acudiente
+    )
+VALUES (
+        4,
+        'Ana',
+        'María',
+        'López',
+        'Torres',
+        '9999999999',
+        'Calle Principal, Ciudad',
+        'ana@example.com',
+        3,
+        2,
+        4
+    );
+
+INSERT INTO
+    usuario (
+        usu_id,
+        usu_nombre,
+        usu_segdo_nombre,
+        usu_primer_apellido_usuar,
+        usu_segdo_apellido_usuar,
+        usu_telefono,
+        usu_direccion,
+        usu_email,
+        usu_tipodoc,
+        usu_genero,
+        usu_acudiente
+    )
+VALUES (
+        5,
+        'Pedro',
+        '',
+        'Ramírez',
+        'Sánchez',
+        '1111111111',
+        'Avenida Central, Ciudad',
+        'pedro@example.com',
+        4,
+        3,
+        5
+    );
+
+INSERT INTO
+    cita (
+        cit_codigo,
+        cit_fecha,
+        cit_estadoCita,
+        cit_medico,
+        cit_datosUsuario
+    )
+VALUES (1, '2023-07-13', 1, 123456, 1);
+
+INSERT INTO
+    cita (
+        cit_codigo,
+        cit_fecha,
+        cit_estadoCita,
+        cit_medico,
+        cit_datosUsuario
+    )
+VALUES (2, '2023-07-14', 2, 234567, 2);
+
+INSERT INTO
+    cita (
+        cit_codigo,
+        cit_fecha,
+        cit_estadoCita,
+        cit_medico,
+        cit_datosUsuario
+    )
+VALUES (3, '2023-07-15', 3, 345678, 3);
+
+INSERT INTO
+    cita (
+        cit_codigo,
+        cit_fecha,
+        cit_estadoCita,
+        cit_medico,
+        cit_datosUsuario
+    )
+VALUES (4, '2023-07-16', 4, 456789, 4);
+
+INSERT INTO
+    cita (
+        cit_codigo,
+        cit_fecha,
+        cit_estadoCita,
+        cit_medico,
+        cit_datosUsuario
+    )
+VALUES (5, '2023-07-17', 5, 567890, 5);
+
+INSERT INTO
+    cita (
+        cit_codigo,
+        cit_fecha,
+        cit_estadoCita,
+        cit_medico,
+        cit_datosUsuario
+    )
+VALUES (6, '2022-07-17', 5, 567890, 5);
+INSERT INTO usuario (usu_nombre, usu_segdo_nombre, usu_primer_apellido_usuar, usu_segdo_apellido_usuar, usu_telefono, usu_direccion, usu_email, usu_tipodoc, usu_genero, usu_acudiente)
+VALUES
+  ('John', 'Doe', 'Smith', 'Johnson', '1234567890', 'Calle Principal 123', 'john.doe@example.com', 1, 1, 1),
+  ('Jane', 'Doe', 'Smith', 'Johnson', '0987654321', 'Avenida Central 456', 'jane.doe@example.com', 1, 2, 2),
+  ('Mike', 'Smith', 'Doe', 'Johnson', '5555555555', 'Carrera 7 890', 'mike.smith@example.com', 2, 1, 3);
 
 
-INSERT INTO usuario (usu_id, usu_nombre, usu_segdo_nombre, usu_primer_apellido_usuar, usu_segdo_apellido_usuar, usu_telefono, usu_direccion, usu_email, usu_tipodoc, usu_genero, usu_acudiente) VALUES ('123','Andres','Santiago','Carvajal','Peliño','3154784596','Bucaramanga','santiagoyo@gmail.com',1,1,1);
-INSERT INTO usuario (usu_id, usu_nombre, usu_segdo_nombre, usu_primer_apellido_usuar, usu_segdo_apellido_usuar, usu_telefono, usu_direccion, usu_email, usu_tipodoc, usu_genero, usu_acudiente) VALUES ('321','Fabio','Alberto','Morales','Petriño','3174578496','Giron','fabio478@outlook.es',1,1,1);
-INSERT INTO usuario (usu_id, usu_nombre, usu_primer_apellido_usuar, usu_segdo_apellido_usuar, usu_telefono, usu_direccion, usu_email, usu_tipodoc, usu_genero, usu_acudiente) VALUES ('74','Alejandra','Mantilla','Garcia','3007845647','Lebrija','aleja78@outlook.es',2,2,2);
-
-INSERT INTO especialidad (esp_id, esp_nombre) VALUES (1, 'Cardiología');
-INSERT INTO especialidad (esp_id, esp_nombre) VALUES (2, 'Dermatología');
-INSERT INTO especialidad (esp_id, esp_nombre) VALUES (3, 'Pediatría');
-INSERT INTO especialidad (esp_id, esp_nombre) VALUES (4, 'Oftalmología');
-INSERT INTO especialidad (esp_id, esp_nombre) VALUES (5, 'Gastroenterología');
+INSERT INTO usuario (usu_nombre, usu_segdo_nombre, usu_primer_apellido_usuar, usu_segdo_apellido_usuar, usu_telefono, usu_direccion, usu_email, usu_tipodoc, usu_genero, usu_acudiente)
+VALUES ('Juan', 'Pablo', 'González', 'López', '123456789', 'Calle 123', 'juan@example.com', 1, 1, 1);
+INSERT INTO usuario (usu_nombre, usu_segdo_nombre, usu_primer_apellido_usuar, usu_segdo_apellido_usuar, usu_telefono, usu_direccion, usu_email, usu_tipodoc, usu_genero, usu_acudiente)
+VALUES ('María', 'Fernanda', 'Martínez', 'Ramírez', '987654321', 'Avenida 456', 'maria@example.com', 1, 2, 2);
 
 
+INSERT INTO cita (cit_fecha, cit_estadoCita, cit_medico, cit_datosUsuario)
+VALUES ('2023-07-13', 1, 1, 1);
+INSERT INTO cita (cit_fecha, cit_estadoCita, cit_medico, cit_datosUsuario)
+VALUES ('2023-07-14', 1, 1, 2);
 
-INSERT INTO consultorio (cons_codigo, cons_nombre) VALUES (1, 'Consultorio A');
-INSERT INTO consultorio (cons_codigo, cons_nombre) VALUES (2, 'Consultorio B');
-INSERT INTO consultorio (cons_codigo, cons_nombre) VALUES (3, 'Consultorio C');
-INSERT INTO consultorio (cons_codigo, cons_nombre) VALUES (4, 'Consultorio D');
-INSERT INTO consultorio (cons_codigo, cons_nombre) VALUES (5, 'Consultorio E');
-
-
-
-INSERT INTO medico (med_nroMatriculaProsional, med_nombreCompleto, med_consultorio, med_especialidad) VALUES (123456, 'Dr. Juan Pérez', 1, 1);
-INSERT INTO medico (med_nroMatriculaProsional, med_nombreCompleto, med_consultorio, med_especialidad) VALUES (234567, 'Dra. Ana Rodríguez', 2, 2);
-INSERT INTO medico (med_nroMatriculaProsional, med_nombreCompleto, med_consultorio, med_especialidad) VALUES (345678, 'Dr. Luis Martínez', 3, 3);
-INSERT INTO medico (med_nroMatriculaProsional, med_nombreCompleto, med_consultorio, med_especialidad) VALUES (456789, 'Dra. Laura Gómez', 4, 4);
-INSERT INTO medico (med_nroMatriculaProsional, med_nombreCompleto, med_consultorio, med_especialidad) VALUES (567890, 'Dr. Carlos Sánchez', 5, 5);
-
-INSERT INTO estado_cita (estcita_id, estcita_nombre) VALUES (1, 'Pendiente');
-INSERT INTO estado_cita (estcita_id, estcita_nombre) VALUES (2, 'Confirmada');
-INSERT INTO estado_cita (estcita_id, estcita_nombre) VALUES (3, 'Cancelada');
-INSERT INTO estado_cita (estcita_id, estcita_nombre) VALUES (4, 'Realizada');
-INSERT INTO estado_cita (estcita_id, estcita_nombre) VALUES (5, 'Ausente');
+INSERT INTO medico (med_nroMatriculaProsional,med_nombreCompleto, med_consultorio, med_especialidad)
+VALUES (7,'Dr. Roberto Gómez', 4, 4);
 
 
+INSERT INTO usuario (usu_nombre, usu_segdo_nombre, usu_primer_apellido_usuar, usu_segdo_apellido_usuar, usu_telefono, usu_direccion, usu_email, usu_tipodoc, usu_genero, usu_acudiente)
+VALUES ('Ana', 'María', 'Sánchez', 'Gómez', '111111111', 'Avenida 789', 'ana@example.com', 1, 2, 2);
+INSERT INTO usuario (usu_nombre, usu_segdo_nombre, usu_primer_apellido_usuar, usu_segdo_apellido_usuar, usu_telefono, usu_direccion, usu_email, usu_tipodoc, usu_genero, usu_acudiente)
+VALUES ('Carlos', 'Alberto', 'López', 'Pérez', '222222222', 'Calle 456', 'carlos@example.com', 2, 1, 1);
+INSERT INTO cita (cit_fecha, cit_estadoCita, cit_medico, cit_datosUsuario)
+VALUES ('2023-07-15', 1, 1, 1);
+INSERT INTO cita (cit_fecha, cit_estadoCita, cit_medico, cit_datosUsuario)
+VALUES ('2023-07-16', 2, 11, 3);
 
-INSERT INTO tipo_documento (tipdoc_id, tipdoc_nombre, tipdoc_abreviatura) VALUES (1, 'Cédula de Ciudadanía', 'CC');
-INSERT INTO tipo_documento (tipdoc_id, tipdoc_nombre, tipdoc_abreviatura) VALUES (2, 'Tarjeta de Identidad', 'TI');
-INSERT INTO tipo_documento (tipdoc_id, tipdoc_nombre, tipdoc_abreviatura) VALUES (3, 'Cédula de Extranjería', 'CE');
-INSERT INTO tipo_documento (tipdoc_id, tipdoc_nombre, tipdoc_abreviatura) VALUES (4, 'Pasaporte', 'PAS');
-INSERT INTO tipo_documento (tipdoc_id, tipdoc_nombre, tipdoc_abreviatura) VALUES (5, 'Registro Civil', 'RC');
+INSERT INTO medico (med_nroMatriculaProsional, med_nombreCompleto, med_consultorio, med_especialidad)
+VALUES (11, 'Dr. Juan Pérez', 3, 2);
 
-
-
-INSERT INTO genero (gen_id, gen_nombre, gen_abreviatura) VALUES (1, 'Masculino', 'M');
-INSERT INTO genero (gen_id, gen_nombre, gen_abreviatura) VALUES (2, 'Femenino', 'F');
-INSERT INTO genero (gen_id, gen_nombre, gen_abreviatura) VALUES (3, 'Otro', 'O');
-INSERT INTO genero (gen_id, gen_nombre, gen_abreviatura) VALUES (4, 'No especificado', 'NE');
-INSERT INTO genero (gen_id, gen_nombre, gen_abreviatura) VALUES (5, 'Prefiero no decirlo', 'PND');
-
-
-
-INSERT INTO acudiente (acu_codigo, acu_nombreCompleto, acu_telefono, acu_direccion) VALUES (1, 'Luisa Pérez', '1234567890', 'Calle 123, Ciudad');
-INSERT INTO acudiente (acu_codigo, acu_nombreCompleto, acu_telefono, acu_direccion) VALUES (2, 'Pedro Gómez', '9876543210', 'Avenida 456, Ciudad');
-INSERT INTO acudiente (acu_codigo, acu_nombreCompleto, acu_telefono, acu_direccion) VALUES (3, 'María Rodríguez', '5555555555', 'Carrera 789, Ciudad');
-INSERT INTO acudiente (acu_codigo, acu_nombreCompleto, acu_telefono, acu_direccion) VALUES (4, 'Andrés Torres', '9999999999', 'Calle Principal, Ciudad');
-INSERT INTO acudiente (acu_codigo, acu_nombreCompleto, acu_telefono, acu_direccion) VALUES (5, 'Laura Sánchez', '1111111111', 'Avenida Central, Ciudad');
-
-
-
-INSERT INTO usuario (usu_id, usu_nombre, usu_segdo_nombre, usu_primer_apellido_usuar, usu_segdo_apellido_usuar, usu_telefono, usu_direccion, usu_email, usu_tipodoc, usu_genero, usu_acudiente) VALUES (1, 'Juan', 'David', 'Pérez', 'Gómez', '1234567890', 'Calle 123, Ciudad', 'juan@example.com', 1, 1, 1);
-INSERT INTO usuario (usu_id, usu_nombre, usu_segdo_nombre, usu_primer_apellido_usuar, usu_segdo_apellido_usuar, usu_telefono, usu_direccion, usu_email, usu_tipodoc, usu_genero, usu_acudiente) VALUES (2, 'María', 'Fernanda', 'Rodríguez', 'García', '9876543210', 'Avenida 456, Ciudad', 'maria@example.com', 2, 2, 2);
-INSERT INTO usuario (usu_id, usu_nombre, usu_segdo_nombre, usu_primer_apellido_usuar, usu_segdo_apellido_usuar, usu_telefono, usu_direccion, usu_email, usu_tipodoc, usu_genero, usu_acudiente) VALUES (3, 'Carlos', '', 'González', 'Sánchez', '5555555555', 'Carrera 789, Ciudad', 'carlos@example.com', 1, 1, 3);
-INSERT INTO usuario (usu_id, usu_nombre, usu_segdo_nombre, usu_primer_apellido_usuar, usu_segdo_apellido_usuar, usu_telefono, usu_direccion, usu_email, usu_tipodoc, usu_genero, usu_acudiente) VALUES (4, 'Ana', 'María', 'López', 'Torres', '9999999999', 'Calle Principal, Ciudad', 'ana@example.com', 3, 2, 4);
-INSERT INTO usuario (usu_id, usu_nombre, usu_segdo_nombre, usu_primer_apellido_usuar, usu_segdo_apellido_usuar, usu_telefono, usu_direccion, usu_email, usu_tipodoc, usu_genero, usu_acudiente) VALUES (5, 'Pedro', '', 'Ramírez', 'Sánchez', '1111111111', 'Avenida Central, Ciudad', 'pedro@example.com', 4, 3, 5);
-
-
-
-INSERT INTO cita (cit_codigo, cit_fecha, cit_estadoCita, cit_medico, cit_datosUsuario) VALUES (1, '2023-07-13', 1, 123456, 1);
-INSERT INTO cita (cit_codigo, cit_fecha, cit_estadoCita, cit_medico, cit_datosUsuario) VALUES (2, '2023-07-14', 2, 234567, 2);
-INSERT INTO cita (cit_codigo, cit_fecha, cit_estadoCita, cit_medico, cit_datosUsuario) VALUES (3, '2023-07-15', 3, 345678, 3);
-INSERT INTO cita (cit_codigo, cit_fecha, cit_estadoCita, cit_medico, cit_datosUsuario) VALUES (4, '2023-07-16', 4, 456789, 4);
-INSERT INTO cita (cit_codigo, cit_fecha, cit_estadoCita, cit_medico, cit_datosUsuario) VALUES (5, '2023-07-17', 5, 567890, 5);
-INSERT INTO cita (cit_codigo, cit_fecha, cit_estadoCita, cit_medico, cit_datosUsuario) VALUES (6, '2022-07-17', 5, 567890, 5);

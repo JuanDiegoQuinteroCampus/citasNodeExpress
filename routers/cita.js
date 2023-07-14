@@ -20,5 +20,5 @@ storageCita.get("/", (req, res) => {
   );
 });
 
-export default storageCita;
 
+export default storageCita;

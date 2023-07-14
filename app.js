@@ -3,6 +3,7 @@ import express from 'express';
 import storageUsuario from './routers/usuario.js';
 import storageCita from './routers/cita.js';
 import storageMedico from './routers/medico.js';
+import storageProxCita from './routers/proxCita.js';
 
 
 dotenv.config();

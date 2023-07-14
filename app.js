@@ -5,7 +5,14 @@ import storageCita from './routers/cita.js';
 import storageMedico from './routers/medico.js';
 import storageProxCita from './routers/proxCita.js';
 import storageCitaMedico from './routers/citaMedico.js';
-
+import storageConsultorias from './routers/consultorias.js';
+import storageEncontrarCita from './routers/encontrarCita.js';
+import storageMedConsultorio from './routers/mediConsultorio.js';
+import storageContadorCitas from './routers/contadorCitas.js';
+import storageConsultorioCitas from './routers/consultorioDeCitas.js';
+import storageCitasGenero from './routers/pacientesGenero.js';
+/* import storageCitasGenero from './routers/pacientesGenero.js'; */
+import storageDatosCita from './routers/datoCitas.js';
 
 dotenv.config();
 const appExpress = express();//levanta todo el sevicio

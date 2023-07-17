@@ -10,16 +10,25 @@ storageMedico.use((req, res, next) => {
   next();
 });
 
-storageMedico.get("/", (req, res) => {
+storageMedico.get("/:especialidad", (req, res) => {
+  const especialidad = req.params.especialidad;
   con.query(
     `SELECT med_nombreCompleto
     FROM medico
     INNER JOIN especialidad ON medico.med_especialidad = especialidad.esp_id
-    WHERE especialidad.esp_nombre ;
+    WHERE especialidad.esp_nombre = ?;
     `,
-
-    (err, data, fil) => {
-      res.send(JSON.stringify(data));
+    [especialidad],
+    (err, results) => {
+      if (err) {
+        res.status(500).json({ error: "Error en la base de datos" });
+      } else if (results.length === 0) {
+        res
+          .status(404)
+          .json({ message: "No se encontraron médicos con la especialidad especificada" });
+      } else {
+        res.json({ medicos: results });
+      }
     }
   );
 });

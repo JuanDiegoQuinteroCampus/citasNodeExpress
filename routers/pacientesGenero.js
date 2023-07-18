@@ -10,26 +10,15 @@ storageCitasGenero.use((req, res, next) => {
   next();
 });
 
-storageCitasGenero.get('/citas/:genero_id', (req, res) => {
-  const genero_id = req.params.genero_id;
-  
-  con.query(
-    `SELECT c.*
-    FROM cita c
-    INNER JOIN usuario u ON c.cit_datosUsuario = u.usu_id
-    INNER JOIN genero g ON u.usu_genero = g.gen_id
-    WHERE g.gen_id = ? AND c.cit_estadoCita = 1;`,
-    [genero_id],
-    (err, results) => {
-      if (err) {
-        res.status(500).json({ error: 'Error en la base de datos' });
-      } else if (results.length === 0) {
-        res.status(404).json({ message: 'No se encontraron citas para el género y estado especificados' });
-      } else {
-        res.json({ citas: results });
-      }
-    }
-  );
+storageCitasGenero.get('/citas/:genero/:estado', (req, res) => {
+  let data = req.params;
+    con.query(
+         `SELECT cita.cit_fecha as fecha, usuario.usu_nombre as paciente, estado_cita.estcita_nombre as estado, genero.gen_nombre as genero from cita INNER JOIN usuario on usuario.usu_id=cita.cit_datosUsuario INNER JOIN genero on genero.gen_id=usuario.usu_genero INNER JOIN estado_cita on estado_cita.estcita_id=cita.cit_estadoCita where genero.gen_nombre=? and estado_cita.estcita_nombre=? `,
+        Object.values(data),
+        (err,data,fill)=>{
+            res.send(data);
+        }
+    )
 });
 
 export default storageCitasGenero;

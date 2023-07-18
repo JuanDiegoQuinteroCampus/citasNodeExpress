@@ -904,3 +904,12 @@ VALUES ('2023-07-16', 2, 11, 3);
 INSERT INTO medico (med_nroMatriculaProsional, med_nombreCompleto, med_consultorio, med_especialidad)
 VALUES (11, 'Dr. Juan Pérez', 3, 2);
 
+INSERT INTO usuario (usu_id, usu_nombre, usu_segdo_nombre, usu_primer_apellido_usuar, usu_segdo_apellido_usuar, usu_telefono, usu_direccion, usu_email, usu_tipodoc, usu_genero, usu_acudiente) VALUES ('145','fabian','Santiago','Carvajal','Peliño','3154784596','Bucaramanga','santiagoyo@gmail.com',1,1,1);
+INSERT INTO usuario (usu_id, usu_nombre, usu_segdo_nombre, usu_primer_apellido_usuar, usu_segdo_apellido_usuar, usu_telefono, usu_direccion, usu_email, usu_tipodoc, usu_genero, usu_acudiente) VALUES ('245','jhon','Alberto','Morales','Petriño','3174578496','Giron','fabio478@outlook.es',1,1,1);
+INSERT INTO usuario (usu_id, usu_nombre, usu_primer_apellido_usuar, usu_segdo_apellido_usuar, usu_telefono, usu_direccion, usu_email, usu_tipodoc, usu_genero, usu_acudiente) VALUES ('345','makro','Mantilla','Garcia','3007845647','Lebrija','aleja78@outlook.es',2,2,2);
+
+
+INSERT INTO estado_cita(estcita_nombre) VALUES ('Aprobada');
+INSERT INTO estado_cita(estcita_nombre) VALUES ('Rechazada');
+INSERT INTO estado_cita(estcita_nombre) VALUES ('En espera');
+                                                
